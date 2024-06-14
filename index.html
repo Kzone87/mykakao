@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>friends</title>
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+
+    <div id="wrap">
+        <header>
+            <div class="mslider">
+                <div class="leftslider">
+                    <span class="svcprovider">KT</span>
+                    <span class="time">오후 3 : 27</span>
+                </div>
+                <div class="rightslider">
+                    <i class="fa-solid fa-volume-low"></i>
+                    <i class="fa-solid fa-signal"></i>
+                    <span class="network">5G</span>
+                    <i class="fa-solid fa-battery-half"></i>
+                </div>
+            </div>
+
+            <div class="lnb">
+                <h1>친구</h1>
+                <div class="menucontainer">
+                    <a href="./settings.html"><i class="fa-solid fa-gear fa-2x"><span class="sr-only">설정</span></i></a>
+                    <a href="#"><i class="fa-solid fa-music fa-2x"></i><span class="sr-only">음악</span></a>
+                    <a href="#"><i class="fa-solid fa-user-plus fa-2x"></i><span class="sr-only">친구추가</span></a>
+                    <a href="#"><i class="fa-solid fa-magnifying-glass fa-2x"></i><span class="sr-only">찾기</span></a>
+                </div>
+            </div>
+        </header>
+
+        <section class="frierds">
+
+            <h2 class="sr-only">친구목록</h2>
+
+            <div class="mainprofile">
+                <p class="frame">
+                    <img src="./images/mainprofill.jpg" alt="miniprofile">
+                    <img class="bgdata" src="./images/main_bg.jpg" alt="bgdata">
+                </p>
+                <div class="intro">
+                    <p class="name">정훈</p>
+                    <p class="status">time slips anyway,just do it</p>
+                </div>
+            </div>
+
+            <div class="profilecontainer">
+                <div class="info">
+                    <input type="checkbox" name="miniprofileslider" id="miniprofileslider">
+                    <label for="miniprofileslider">생일인 친구 <span class="arrow"></span></label>
+                </div>
+
+                <div class="miniprofile">
+                    <p class="frame">
+                        <img src="./images/birthcake.jpg" alt="miniprofile">
+                    </p>
+                    <div class="intro">
+                        <p class="name">친구의 생일을 확인해 보세요</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profilecontainer">
+
+                <div class="info">
+                    <input type="checkbox" name="miniprofileslider2" id="miniprofileslider2">
+                    <label for="miniprofileslider2">즐겨찾기 <span class="arrow"></span></label>
+                </div>
+
+                <div class="miniprofile">
+                    <p class="frame">
+                        <img src="./images/mainprofill.jpg" alt="miniprofile">
+                        <img class="bgdata" src="./images/null_bg.jpg" alt="bgdata">
+                    </p>
+                    <div class="intro">
+                        <p class="name">내사랑♥</p>
+                        <p class="status"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profilecontainer">
+                <div class="info">
+                    <input type="checkbox" name="miniprofileslider3" id="miniprofileslider3">
+                    <label for="miniprofileslider3">친구<span class="arrow"></span></label>
+                </div>
+
+                <div class="miniprofile">
+                    <p class="frame">
+                        <img src="./images/null.jpg" alt="miniprofile">
+                        <img class="bgdata" src="./images/null_bg.jpg" alt="bgdata">
+                    </p>
+                    <div class="intro">
+                        <p class="name">동생</p>
+                        <p class="status"></p>
+                    </div>
+                </div>
+
+                <div class="miniprofile">
+                    <p class="frame">
+                        <img src="./images/mother.jpg" alt="miniprofile">
+                        <img class="bgdata" src="./images/mom_bg.jpg" alt="bgdata">
+                    </p>
+                    <div class="intro">
+                        <p class="name">어무이</p>
+                        <p class="status">지금이 젤젊다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="fullprofile main">
+            <h2 class="sr-only">풀 프로필</h2>
+            <a href="#" class="fullclose">
+                <i class="fa-solid fa-x"></i>
+            </a>
+            <div class="minicontainer">
+                <p class="frame">
+                    <img src="./images/mainprofill.jpg" alt="miniprofile">
+                </p>
+                <p class="name">정훈</p>
+                <p class="status">time slips anyway,just do it</p>
+            </div>
+        </section>
+
+
+        <footer>
+            <nav class="gnb">
+                <ul>
+                    <li>
+                        <span class="sr-only">친구</span>
+                        <a href="./index.html"><i class="fa-solid fa-user fa-2x"></i></a>
+                    </li>
+                    <li>
+                        <span class="sr-only">채팅</span>
+                        <a href="./chatlist.html"><i class="fa-solid fa-comment fa-2x"></i></a>
+                    </li>
+                    <li>
+                        <span class="sr-only">오픈채팅</span>
+                        <a href="./openchat.html"><i class="fa-solid fa-comments fa-2x"></i></a>
+                    </li>
+                    <li>
+                        <span class="sr-only">더보기</span>
+                        <a href="./listmore.html"><i class="fa-solid fa-ellipsis fa-2x"></i></a>
+                    </li>
+                </ul>
+            </nav>
+        </footer>
+    </div>
+
+
+    <script src="./js/gnbslider.js"></script>
+    <script src="./js/fullprofileslider.js"></script>
+    <script src="https://kit.fontawesome.com/9ad59cd5cc.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

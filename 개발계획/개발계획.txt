@@ -1,0 +1,52 @@
+1. 개발범위(페이지) 선정 및 파일명
+
+ friends  -> index.html
+ (
+    profile1
+    profile2
+    profile3
+    profile4
+ )
+
+ chatlist
+(
+    talk1
+    talk2
+    talk3
+    talk4
+)
+
+
+ openchat
+
+
+
+ listmore
+
+
+settings
+
+
+ 2. 각 페이지별 스케치(시안) -> 구성요소 확정
+
+
+
+
+ 3. 필요한 리소스 수집 -> 이미지,영상,글
+ awesomefont
+ https://fontawesome.com/icons/magnifying-glass?f=classic&s=solid
+ https://fontawesome.com/icons/comments?f=classic&s=thin
+
+
+
+
+ https://fontawesome.com/icons/user?f=classic&s=solid
+ https://fontawesome.com/icons/comment?f=classic&s=solid
+ https://fontawesome.com/icons/ellipsis?f=classic&s=solid
+
+
+ https://fontawesome.com/icons/face-smile?f=classic&s=regular
+ https://fontawesome.com/icons/bell?f=classic&s=regular
+ https://fontawesome.com/icons/gear?f=classic&s=thin
+
+ 4. 코딩작업

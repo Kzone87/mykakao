@@ -1,0 +1,124 @@
+@charset "utf-8";
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+q,
+address,
+strong,
+em,
+img,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+a,
+figure,
+figcaption,
+mark,
+i,
+b,
+header,
+section,
+article,
+footer,
+nav,
+aside,
+form,
+fieldset,
+legend,
+input,
+select,
+option,
+textarea {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+textarea {
+  resize: none;
+}
+
+label,
+button {
+  cursor: pointer;
+}
+
+img,
+fieldset {
+  border: none;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+address,
+em {
+  font-style: normal;
+}
+
+hr,
+caption {
+  display: none;
+}
+
+q {
+  /*자동으로 삽입되는 쌍따옴표 제거*/
+  quotes: none;
+}
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: #222;
+  text-decoration: none;
+}
+
+body {
+  /* 페이지에서 세로 스크롤바가 나타났을때 가로로 흔들리는 현상을 방지하기 위해 설정 */
+  overflow-y: scroll;
+  color: #222;
+  font-weight: 300;
+  font-size: 13px;
+  font-family: "Noto Sans KR", 돋움;
+}
+
+.text-center {
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+}
+
+/* 화면에 보이지는 않지만 시각장애인을 위한 웹접근성측면에서 스크린리더장치가 내용을 읽을 수 있도록 하는 역할 */
+.sr-only {
+  position: absolute;
+  left: -9999px;
+}
