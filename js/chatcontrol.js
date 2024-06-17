@@ -20,7 +20,7 @@ const $chatTimes = document.querySelectorAll('.chattime');
 
 
 // 발급받은 OpenAI API 키를 변수로 저장
-const apiKey = 'sk-proj-cIvC2T6iVzZHiWxAZyRjT3BlbkFJGpRqcvtP8c9orukbWKpP';
+const apiKey = 'sk-proj-Gxr6CIL1w2U5T5N2sdDwT3BlbkFJXpiJ8H2V5YeqYDm73H1u';
 // OpenAI API 엔드포인트 주소를 변수로 저장
 const apiEndpoint = 'https://api.openai.com/v1/chat/completions'
 
