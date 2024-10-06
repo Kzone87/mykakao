@@ -17,94 +17,74 @@ const $miniProfiles = document.querySelectorAll('.minichat>.frame>img');
 const $chatNames = document.querySelectorAll('.chatname');
 const $chatTimes = document.querySelectorAll('.chattime');
 
+// GPT 가족 모델
+let familyConversationHistory = []; // 대화 기록을 저장할 배열
 
-
-// 발급받은 OpenAI API 키를 변수로 저장
-const apiKey = 'sk-proj-Gxr6CIL1w2U5T5N2sdDwT3BlbkFJXpiJ8H2V5YeqYDm73H1u';
-// OpenAI API 엔드포인트 주소를 변수로 저장
-const apiEndpoint = 'https://api.openai.com/v1/chat/completions'
-
-// ChatGPT API 가족 모델
 async function fetchAIResponseFamily(prompt) {
-    // API 요청에 사용할 옵션을 정의
-    const requestOptions = {
-        method: 'POST',
-        // API 요청의 헤더를 설정
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${apiKey}`
-        },
-        body: JSON.stringify({
-            model: "gpt-3.5-turbo",  // 사용할 AI 모델
-            messages: [{
-                role: "system",
-                content: "You are a very kind family member",
-            },
-            {
-                role: "user", // 메시지 역할을 user로 설정
-                content: prompt + 'answer like you are my family, we are having a normal conversation,speak korean,answer shortly,use Comfortable way of speaking'  // 사용자가 입력한 메시지
-            },],
-            temperature: 0.8, // 모델의 출력 다양성
-            max_tokens: 1024, // 응답받을 메시지 최대 토큰(단어) 수 설정
-            top_p: 1, // 토큰 샘플링 확률을 설정
-            frequency_penalty: 0.5, // 일반적으로 나오지 않는 단어를 억제하는 정도
-            presence_penalty: 0.5, // 동일한 단어나 구문이 반복되는 것을 억제하는 정도
-            stop: ["Human"], // 생성된 텍스트에서 종료 구문을 설정
-        }),
-    };
+    // 사용자 입력 프롬프트 추가
+    familyConversationHistory.push({ role: "user", content: prompt });
 
-    // API 요청후 응답 처리
     try {
-        const response = await fetch(apiEndpoint, requestOptions);
+        // 대화 기록을 서버에 전송
+        const response = await fetch('/ai/family', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ messages: familyConversationHistory }), // 대화 기록 포함
+        });
+        
         const data = await response.json();
-        const aiResponse = data.choices[0].message.content;
-        return aiResponse;
+
+        // AI 응답을 대화 기록에 추가
+        familyConversationHistory.push({ role: "assistant", content: data.response });
+
+        // 최근 응답 3개만 기억
+        if (familyConversationHistory.length > 6) { // user와 assistant 각각 3개씩
+            familyConversationHistory.splice(0, familyConversationHistory.length - 6);
+        }
+
+        // AI 응답을 반환
+        return data.response; // 서버에서 JSON 형태로 응답이 오도록
     } catch (error) {
         console.error('OpenAI API 호출 중 오류 발생:', error);
         return 'OpenAI API 호출 중 오류 발생';
     }
 }
+
+
 
 // GPT 조언자 모델
-async function fetchAIResponseAdvisor(prompt) {
-    // API 요청에 사용할 옵션을 정의
-    const requestOptions = {
-        method: 'POST',
-        // API 요청의 헤더를 설정
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${apiKey}`
-        },
-        body: JSON.stringify({
-            model: "gpt-3.5-turbo",  // 사용할 AI 모델
-            messages: [{
-                role: "system",
-                content: "You are a strongly helpful Advisor",
-            },
-            {
-                role: "user", // 메시지 역할을 user로 설정
-                content: prompt + 'answer professional,answer like explaining to a child,if you are not correct you will pay the price,speak korean,use public speaking style'  // 사용자가 입력한 메시지
-            },],
-            temperature: 0.8, // 모델의 출력 다양성
-            max_tokens: 1024, // 응답받을 메시지 최대 토큰(단어) 수 설정
-            top_p: 1, // 토큰 샘플링 확률을 설정
-            frequency_penalty: 0.5, // 일반적으로 나오지 않는 단어를 억제하는 정도
-            presence_penalty: 0.5, // 동일한 단어나 구문이 반복되는 것을 억제하는 정도
-            stop: ["Human"], // 생성된 텍스트에서 종료 구문을 설정
-        }),
-    };
+let conversationHistory = []; // 대화 기록을 저장할 배열
 
-    // API 요청후 응답 처리
+async function fetchAIResponseAdvisor(prompt) {
+    // 사용자 입력 프롬프트 추가
+    conversationHistory.push({ role: "user", content: prompt });
+
     try {
-        const response = await fetch(apiEndpoint, requestOptions);
+        // 대화 기록을 서버에 전송
+        const response = await fetch('/ai/advisor', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ messages: conversationHistory }), // 대화 기록 포함
+        });
+        
         const data = await response.json();
-        const aiResponse = data.choices[0].message.content;
-        return aiResponse;
+
+        // AI 응답을 대화 기록에 추가
+        conversationHistory.push({ role: "assistant", content: data.response });
+
+        // 최근 응답 3개만 기억
+        if (conversationHistory.length > 6) { // user와 assistant 각각 3개씩
+            conversationHistory.splice(0, conversationHistory.length - 6);
+        }
+
+        return data.response; // 서버에서 JSON 형태로 응답이 오도록
     } catch (error) {
         console.error('OpenAI API 호출 중 오류 발생:', error);
         return 'OpenAI API 호출 중 오류 발생';
     }
 }
+
+
 
 
 
